@@ -1,4 +1,6 @@
-﻿namespace Aoc2024;
+﻿using System.Diagnostics;
+
+namespace Aoc2024;
 
 public class Program
 {
@@ -7,7 +9,15 @@ public class Program
         var solutions = LoadSolutions();
         foreach (var solution in solutions)
         {
-            Console.WriteLine($"{solution.GetType().Name}: {solution.GetSolution()}");
+            Stopwatch sw = new();
+
+            int result;
+
+            sw.Start();
+            result = solution.GetSolution();
+            sw.Stop();
+
+            Console.WriteLine($"{solution.GetType().Name}: {result}   ({sw.ElapsedMilliseconds} ms)");
         }
     }
 
