@@ -2,7 +2,7 @@ namespace Aoc2024;
 
 public class Day6Part2Solution : ISolution
 {
-    public int GetSolution()
+    public long GetSolution()
     {
         var map = File.ReadLines("day6/input")
             .Select(l => l.ToCharArray())

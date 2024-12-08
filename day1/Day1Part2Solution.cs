@@ -4,7 +4,7 @@ namespace Aoc2024;
 
 public class Day1Part2Solution : ISolution
 {
-    public int GetSolution()
+    public long GetSolution()
     {
         var (list1, list2) = File.ReadLines("day1/input")
             .Select(line => line.Split("   "))

@@ -11,7 +11,7 @@ public class Program
         {
             Stopwatch sw = new();
 
-            int result;
+            long result;
 
             sw.Start();
             result = solution.GetSolution();

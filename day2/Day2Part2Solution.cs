@@ -2,7 +2,7 @@ namespace Aoc2024;
 
 public class Day2Part2Solution : ISolution
 {
-    public int GetSolution()
+    public long GetSolution()
     {
         var reports = File.ReadLines("day2/input")
             .Select(line => line.Split(" ").Select(int.Parse));

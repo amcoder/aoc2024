@@ -2,7 +2,7 @@ namespace Aoc2024;
 
 public class Day3Part2Solution : ISolution
 {
-    public int GetSolution()
+    public long GetSolution()
     {
         var input = File.ReadAllText("day3/input");
 
