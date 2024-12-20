@@ -5,7 +5,7 @@ namespace Aoc2024;
 
 public partial class Program
 {
-    public static void Main()
+    public static void Main(string[] args)
     {
         var solutions = LoadSolutions()
             .Select(s =>
@@ -13,6 +13,7 @@ public partial class Program
                 var match = SolutionNameRegex().Match(s.GetType().Name);
                 return (s, int.Parse(match.Groups[1].Value), int.Parse(match.Groups[2].Value));
             })
+            .Where(s => args.Length == 0 || args.Contains(s.Item2.ToString()))
             .OrderBy(s => s.Item2)
             .ThenBy(s => s.Item3);
 
