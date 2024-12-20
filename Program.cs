@@ -1,13 +1,22 @@
 ﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Aoc2024;
 
-public class Program
+public partial class Program
 {
     public static void Main()
     {
-        var solutions = LoadSolutions();
-        foreach (var solution in solutions)
+        var solutions = LoadSolutions()
+            .Select(s =>
+            {
+                var match = SolutionNameRegex().Match(s.GetType().Name);
+                return (s, int.Parse(match.Groups[1].Value), int.Parse(match.Groups[2].Value));
+            })
+            .OrderBy(s => s.Item2)
+            .ThenBy(s => s.Item3);
+
+        foreach (var (solution, day, part) in solutions)
         {
             Stopwatch sw = new();
 
@@ -17,7 +26,7 @@ public class Program
             result = solution.GetSolution();
             sw.Stop();
 
-            Console.WriteLine($"{solution.GetType().Name}: {result}   ({sw.ElapsedMilliseconds} ms)");
+            Console.WriteLine($"Day {day} Part {part}: {result}   ({sw.ElapsedMilliseconds} ms)");
         }
     }
 
@@ -29,4 +38,7 @@ public class Program
             .Where(t => t.IsAssignableTo(typeof(ISolution)))
             .Select(t => (ISolution)Activator.CreateInstance(t)!);
     }
+
+    [GeneratedRegex(@"^Day(\d+)Part(\d+)Solution$")]
+    private static partial Regex SolutionNameRegex();
 }
