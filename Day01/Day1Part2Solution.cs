@@ -6,7 +6,7 @@ public class Day1Part2Solution : ISolution
 {
     public long GetSolution()
     {
-        var (list1, list2) = File.ReadLines("day1/input")
+        var (list1, list2) = File.ReadLines("Day01/input")
             .Select(line => line.Split("   "))
             .Aggregate((new List<int>(), new Dictionary<int, int>()), (acc, l) =>
             {

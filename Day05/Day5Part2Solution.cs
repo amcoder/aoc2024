@@ -1,10 +1,10 @@
 namespace Aoc2024;
 
-public class Day5Part1Solution : ISolution
+public class Day5Part2Solution : ISolution
 {
     public long GetSolution()
     {
-        var lines = File.ReadLines("day5/input");
+        var lines = File.ReadLines("Day05/input");
 
         var rules = lines.TakeWhile(l => l.Length > 0)
             .Select(l => l.Split('|').Select(int.Parse).ToArray())
@@ -23,7 +23,8 @@ public class Day5Part1Solution : ISolution
             .Select(l => l.Split(',').Select(int.Parse).ToArray());
 
         var result = updates
-            .Where(update => IsOrdered(update, rules))
+            .Where(update => !IsOrdered(update, rules))
+            .Select(update => Order(update, rules))
             .Select(update => update[update.Length / 2])
             .Sum();
 
@@ -46,5 +47,30 @@ public class Day5Part1Solution : ISolution
         }
 
         return true;
+    }
+
+    private static int[] Order(IEnumerable<int> update, Dictionary<int, List<int>> rules)
+    {
+        var list = update.ToList();
+        List<int> result = [list[0]];
+
+        for (var i = 1; i < list.Count; i++)
+        {
+            var j = 0;
+            for (; j < result.Count; j++)
+            {
+                if (rules.TryGetValue(list[i], out var value) && value.Contains(result[j]))
+                {
+                    result.Insert(j, list[i]);
+                    break;
+                }
+            }
+            if (j == result.Count)
+            {
+                result.Add(list[i]);
+            }
+        }
+
+        return [.. result];
     }
 }

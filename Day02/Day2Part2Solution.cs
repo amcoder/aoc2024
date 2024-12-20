@@ -4,7 +4,7 @@ public class Day2Part2Solution : ISolution
 {
     public long GetSolution()
     {
-        var reports = File.ReadLines("day2/input")
+        var reports = File.ReadLines("Day02/input")
             .Select(line => line.Split(" ").Select(int.Parse));
 
         return reports.Count(IsSafe);

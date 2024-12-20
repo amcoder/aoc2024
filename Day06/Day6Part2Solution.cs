@@ -4,7 +4,7 @@ public class Day6Part2Solution : ISolution
 {
     public long GetSolution()
     {
-        var map = File.ReadLines("day6/input")
+        var map = File.ReadLines("Day06/input")
             .Select(l => l.ToCharArray())
             .ToArray();
 

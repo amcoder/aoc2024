@@ -6,7 +6,7 @@ public class Day7Part2Solution : ISolution
 {
     public long GetSolution()
     {
-        var map = File.ReadLines("day7/input")
+        var map = File.ReadLines("Day07/input")
             .Select(l => l.Split(": "))
             .Select(l => (long.Parse(l[0], CultureInfo.InvariantCulture), l[1].Split(' ').Select(long.Parse).Reverse().ToArray()));
 

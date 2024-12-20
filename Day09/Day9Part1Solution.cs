@@ -4,7 +4,7 @@ public class Day9Part1Solution : ISolution
 {
     public long GetSolution()
     {
-        var input = File.ReadAllText("day9/input")
+        var input = File.ReadAllText("Day09/input")
             .Trim()
             .Select(c => c - '0')
             .ToArray();

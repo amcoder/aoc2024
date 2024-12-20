@@ -4,7 +4,7 @@ public class Day3Part2Solution : ISolution
 {
     public long GetSolution()
     {
-        var input = File.ReadAllText("day3/input");
+        var input = File.ReadAllText("Day03/input");
 
         var op1 = 0;
         var op2 = 0;
