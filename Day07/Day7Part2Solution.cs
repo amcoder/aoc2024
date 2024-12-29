@@ -43,10 +43,9 @@ public class Day7Part2Solution : ISolution
             {
                 yield return result + item;
                 yield return result * item;
-                if (long.TryParse($"{item}{result}", out var newResult))
-                {
-                    yield return newResult;
-                }
+
+                var digits = Math.Floor(Math.Log10(result)) + 1;
+                yield return result + item * (int)Math.Pow(10, digits);
             }
         }
     }
