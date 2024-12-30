@@ -20,7 +20,7 @@ public class Day7Part2Solution : ISolution
 
     private static bool IsValid(long value, long[] operands)
     {
-        foreach (var item in Calculate(operands[0], operands.Skip(1).ToArray()))
+        foreach (var item in Calculate(operands[0], operands.Skip(1)))
         {
             if (item == value)
             {
